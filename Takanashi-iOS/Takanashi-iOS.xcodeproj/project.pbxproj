@@ -23,6 +23,7 @@
 		2158539A16E0501D004A9D5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2158537516E0501D004A9D5D /* Foundation.framework */; };
 		215853A216E0501D004A9D5D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 215853A016E0501D004A9D5D /* InfoPlist.strings */; };
 		215853A516E0501D004A9D5D /* Takanashi_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 215853A416E0501D004A9D5D /* Takanashi_iOSTests.m */; };
+		21C44DD916E0531800C97042 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C44DD616E0531800C97042 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		215853A116E0501D004A9D5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		215853A316E0501D004A9D5D /* Takanashi_iOSTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Takanashi_iOSTests.h; sourceTree = "<group>"; };
 		215853A416E0501D004A9D5D /* Takanashi_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Takanashi_iOSTests.m; sourceTree = "<group>"; };
+		21C44DD516E0531800C97042 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		21C44DD616E0531800C97042 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 		2158537916E0501D004A9D5D /* Takanashi-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				21C44DD216E0530100C97042 /* Class */,
+				21C44DD116E052DC00C97042 /* External */,
 				2158538216E0501D004A9D5D /* TakanashiDemoAppDelegate.h */,
 				2158538316E0501D004A9D5D /* TakanashiDemoAppDelegate.m */,
 				2158538B16E0501D004A9D5D /* TakanashiDemoViewController.h */,
@@ -158,6 +163,31 @@
 				215853A016E0501D004A9D5D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		21C44DD116E052DC00C97042 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				21C44DD316E0531800C97042 /* JSONKit */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		21C44DD216E0530100C97042 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Class;
+			sourceTree = "<group>";
+		};
+		21C44DD316E0531800C97042 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				21C44DD516E0531800C97042 /* JSONKit.h */,
+				21C44DD616E0531800C97042 /* JSONKit.m */,
+			);
+			name = JSONKit;
+			path = ../../JSONKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +303,7 @@
 				2158538016E0501D004A9D5D /* main.m in Sources */,
 				2158538416E0501D004A9D5D /* TakanashiDemoAppDelegate.m in Sources */,
 				2158538D16E0501D004A9D5D /* TakanashiDemoViewController.m in Sources */,
+				21C44DD916E0531800C97042 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +484,7 @@
 				215853AA16E0501D004A9D5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		215853AB16E0501D004A9D5D /* Build configuration list for PBXNativeTarget "Takanashi-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -461,6 +493,7 @@
 				215853AD16E0501D004A9D5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
