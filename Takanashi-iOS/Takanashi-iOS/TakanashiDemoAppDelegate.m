@@ -7,21 +7,84 @@
 //
 
 #import "TakanashiDemoAppDelegate.h"
-
 #import "TakanashiDemoViewController.h"
+#import <KSCrash/KSCrash.h>
+#import <KSCrash/KSCrashAdvanced.h>
+#import <KSCrash/KSCrashReportSinkStandard.h>
 
+
+#pragma mark - KSCrash static
+static BOOL g_crashInHandler = NO;
+static void onCrash(const KSCrashReportWriter* writer)
+{
+    if (g_crashInHandler)
+    {
+        printf(NULL);
+    }
+}
+
+
+#pragma mark - App delegate
 @implementation TakanashiDemoAppDelegate
 
+@synthesize window = _window;
+@synthesize viewController = _viewController;
+
+#pragma mark - Launch
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // crash handler
+    [self installCrashHandler];
+    [self uploadCrashLog];
+    
+    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[TakanashiDemoViewController alloc] initWithNibName:@"TakanashiDemoViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
-    [self.window makeKeyAndVisible];
+    _viewController = [[TakanashiDemoViewController alloc] initWithNibName:[TakanashiDemoViewController xibName] bundle:nil];
+    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:_viewController];
+    _window.rootViewController = navigation;
+    [_window makeKeyAndVisible];
     return YES;
 }
 
+
+#pragma mark Crash Handler
+- (BOOL)crashInHandler
+{
+    return g_crashInHandler;
+}
+- (void)setCrashInHandler:(BOOL)crashInHandler
+{
+    g_crashInHandler = crashInHandler;
+}
+/**
+ Upload crash reports.
+ */
+- (void)uploadCrashLog
+{
+    KSCrash *crash = [KSCrash instance];
+    if (crash.reportCount > 0) {
+        // upload crash
+        crash.deleteAfterSend = YES;
+        crash.sink = [KSCrashReportSinkStandard sinkWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/crash/%@", TAKANASHI_URL, TAKANASHI_APP_KEY]] onSuccess:nil];
+        [crash sendAllReportsWithCompletion:nil];
+    }
+}
+/**
+ Install crash handler.
+ */
+- (void)installCrashHandler
+{
+    // install crash handler
+    [KSCrash installWithCrashReportSink:nil
+                               userInfo:@{ @"name": UIDevice.currentDevice.name }
+                        zombieCacheSize:16384
+               deadlockWatchdogInterval:5.0f
+                     printTraceToStdout:YES
+                                onCrash:onCrash];
+}
+
+
+#pragma mark - Cocoa application life cycle
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TakanashiDemoViewController : UIViewController
+@interface TakanashiDemoViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+    IBOutlet UITableView *_tableView;
+}
+
++ (NSString *)xibName;
 
 @end

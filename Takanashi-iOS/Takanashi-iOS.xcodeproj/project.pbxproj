@@ -17,13 +17,21 @@
 		2158538816E0501D004A9D5D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2158538716E0501D004A9D5D /* Default@2x.png */; };
 		2158538A16E0501D004A9D5D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2158538916E0501D004A9D5D /* Default-568h@2x.png */; };
 		2158538D16E0501D004A9D5D /* TakanashiDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2158538C16E0501D004A9D5D /* TakanashiDemoViewController.m */; };
-		2158539016E0501D004A9D5D /* TakanashiDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2158538E16E0501D004A9D5D /* TakanashiDemoViewController.xib */; };
+		2158539016E0501D004A9D5D /* TakanashiDemoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2158538E16E0501D004A9D5D /* TakanashiDemoView.xib */; };
 		2158539816E0501D004A9D5D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2158539716E0501D004A9D5D /* SenTestingKit.framework */; };
 		2158539916E0501D004A9D5D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2158537316E0501D004A9D5D /* UIKit.framework */; };
 		2158539A16E0501D004A9D5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2158537516E0501D004A9D5D /* Foundation.framework */; };
 		215853A216E0501D004A9D5D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 215853A016E0501D004A9D5D /* InfoPlist.strings */; };
 		215853A516E0501D004A9D5D /* Takanashi_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 215853A416E0501D004A9D5D /* Takanashi_iOSTests.m */; };
+		2183EA2E16E0A99B005289D5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2183EA2D16E0A99B005289D5 /* CFNetwork.framework */; };
+		2183EA3016E0A9E1005289D5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2183EA2F16E0A9E1005289D5 /* MessageUI.framework */; };
+		2183EA3116E0A9F8005289D5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2183EA2916E0A98D005289D5 /* libz.dylib */; };
+		2183EA3216E0AA07005289D5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2183EA2B16E0A995005289D5 /* SystemConfiguration.framework */; };
+		2183EA3916E0AB29005289D5 /* rikka-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2183EA3716E0AB29005289D5 /* rikka-57.png */; };
+		2183EA3A16E0AB29005289D5 /* rikka-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2183EA3816E0AB29005289D5 /* rikka-114.png */; };
 		21C44DD916E0531800C97042 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C44DD616E0531800C97042 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		21CC715116E067EF001527C1 /* libKSCrashLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21CC715016E067EF001527C1 /* libKSCrashLib.a */; };
+		21CC715416E06FF1001527C1 /* Takanashi.m in Sources */ = {isa = PBXBuildFile; fileRef = 21CC715316E06FF1001527C1 /* Takanashi.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,15 +60,24 @@
 		2158538916E0501D004A9D5D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2158538B16E0501D004A9D5D /* TakanashiDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TakanashiDemoViewController.h; sourceTree = "<group>"; };
 		2158538C16E0501D004A9D5D /* TakanashiDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TakanashiDemoViewController.m; sourceTree = "<group>"; };
-		2158538F16E0501D004A9D5D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TakanashiDemoViewController.xib; sourceTree = "<group>"; };
+		2158538F16E0501D004A9D5D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TakanashiDemoView.xib; sourceTree = "<group>"; };
 		2158539616E0501D004A9D5D /* Takanashi-iOSTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Takanashi-iOSTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2158539716E0501D004A9D5D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		2158539F16E0501D004A9D5D /* Takanashi-iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Takanashi-iOSTests-Info.plist"; sourceTree = "<group>"; };
 		215853A116E0501D004A9D5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		215853A316E0501D004A9D5D /* Takanashi_iOSTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Takanashi_iOSTests.h; sourceTree = "<group>"; };
 		215853A416E0501D004A9D5D /* Takanashi_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Takanashi_iOSTests.m; sourceTree = "<group>"; };
+		2183EA2916E0A98D005289D5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		2183EA2B16E0A995005289D5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2183EA2D16E0A99B005289D5 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		2183EA2F16E0A9E1005289D5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		2183EA3716E0AB29005289D5 /* rikka-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rikka-57.png"; sourceTree = "<group>"; };
+		2183EA3816E0AB29005289D5 /* rikka-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rikka-114.png"; sourceTree = "<group>"; };
 		21C44DD516E0531800C97042 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		21C44DD616E0531800C97042 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		21CC715016E067EF001527C1 /* libKSCrashLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKSCrashLib.a; path = "../KSCrash/KSCrash/build/Release-iphoneos/libKSCrashLib.a"; sourceTree = "<group>"; };
+		21CC715216E06FF1001527C1 /* Takanashi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Takanashi.h; path = Class/Takanashi.h; sourceTree = "<group>"; };
+		21CC715316E06FF1001527C1 /* Takanashi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Takanashi.m; path = Class/Takanashi.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +85,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2183EA3216E0AA07005289D5 /* SystemConfiguration.framework in Frameworks */,
+				2183EA3116E0A9F8005289D5 /* libz.dylib in Frameworks */,
+				2183EA3016E0A9E1005289D5 /* MessageUI.framework in Frameworks */,
+				2183EA2E16E0A99B005289D5 /* CFNetwork.framework in Frameworks */,
+				21CC715116E067EF001527C1 /* libKSCrashLib.a in Frameworks */,
 				2158537416E0501D004A9D5D /* UIKit.framework in Frameworks */,
 				2158537616E0501D004A9D5D /* Foundation.framework in Frameworks */,
 				2158537816E0501D004A9D5D /* CoreGraphics.framework in Frameworks */,
@@ -109,6 +131,11 @@
 		2158537216E0501D004A9D5D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				21CC715016E067EF001527C1 /* libKSCrashLib.a */,
+				2183EA2916E0A98D005289D5 /* libz.dylib */,
+				2183EA2D16E0A99B005289D5 /* CFNetwork.framework */,
+				2183EA2B16E0A995005289D5 /* SystemConfiguration.framework */,
+				2183EA2F16E0A9E1005289D5 /* MessageUI.framework */,
 				2158537316E0501D004A9D5D /* UIKit.framework */,
 				2158537516E0501D004A9D5D /* Foundation.framework */,
 				2158537716E0501D004A9D5D /* CoreGraphics.framework */,
@@ -126,7 +153,9 @@
 				2158538316E0501D004A9D5D /* TakanashiDemoAppDelegate.m */,
 				2158538B16E0501D004A9D5D /* TakanashiDemoViewController.h */,
 				2158538C16E0501D004A9D5D /* TakanashiDemoViewController.m */,
-				2158538E16E0501D004A9D5D /* TakanashiDemoViewController.xib */,
+				2158538E16E0501D004A9D5D /* TakanashiDemoView.xib */,
+				2183EA3716E0AB29005289D5 /* rikka-57.png */,
+				2183EA3816E0AB29005289D5 /* rikka-114.png */,
 				2158537A16E0501D004A9D5D /* Supporting Files */,
 			);
 			path = "Takanashi-iOS";
@@ -176,6 +205,8 @@
 		21C44DD216E0530100C97042 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				21CC715216E06FF1001527C1 /* Takanashi.h */,
+				21CC715316E06FF1001527C1 /* Takanashi.m */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -265,7 +296,9 @@
 				2158538616E0501D004A9D5D /* Default.png in Resources */,
 				2158538816E0501D004A9D5D /* Default@2x.png in Resources */,
 				2158538A16E0501D004A9D5D /* Default-568h@2x.png in Resources */,
-				2158539016E0501D004A9D5D /* TakanashiDemoViewController.xib in Resources */,
+				2158539016E0501D004A9D5D /* TakanashiDemoView.xib in Resources */,
+				2183EA3916E0AB29005289D5 /* rikka-57.png in Resources */,
+				2183EA3A16E0AB29005289D5 /* rikka-114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +337,7 @@
 				2158538416E0501D004A9D5D /* TakanashiDemoAppDelegate.m in Sources */,
 				2158538D16E0501D004A9D5D /* TakanashiDemoViewController.m in Sources */,
 				21C44DD916E0531800C97042 /* JSONKit.m in Sources */,
+				21CC715416E06FF1001527C1 /* Takanashi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,12 +368,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		2158538E16E0501D004A9D5D /* TakanashiDemoViewController.xib */ = {
+		2158538E16E0501D004A9D5D /* TakanashiDemoView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2158538F16E0501D004A9D5D /* en */,
 			);
-			name = TakanashiDemoViewController.xib;
+			name = TakanashiDemoView.xib;
 			sourceTree = "<group>";
 		};
 		215853A016E0501D004A9D5D /* InfoPlist.strings */ = {
@@ -414,7 +448,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Takanashi-iOS/Takanashi-iOS-Prefix.pch";
+				HEADER_SEARCH_PATHS = ../KSCrash/KSCrash/;
 				INFOPLIST_FILE = "Takanashi-iOS/Takanashi-iOS-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -425,7 +461,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Takanashi-iOS/Takanashi-iOS-Prefix.pch";
+				HEADER_SEARCH_PATHS = ../KSCrash/KSCrash/;
 				INFOPLIST_FILE = "Takanashi-iOS/Takanashi-iOS-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

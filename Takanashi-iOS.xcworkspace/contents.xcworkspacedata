@@ -4,4 +4,7 @@
    <FileRef
       location = "group:Takanashi-iOS/Takanashi-iOS.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:KSCrash/KSCrash/KSCrash.xcodeproj">
+   </FileRef>
 </Workspace>
