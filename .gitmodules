@@ -1,8 +1,8 @@
 [submodule "KSCrash"]
 	path = KSCrash
-	url = git://github.com/Kelp404/KSCrash.git
+	url = git://github.com/kelp404/KSCrash.git
 	ignore = dirty
 [submodule "JSONKit"]
 	path = JSONKit
-	url = git://github.com/Kelp404/JSONKit.git
+	url = git://github.com/kelp404/JSONKit.git
 	ignore = dirty
