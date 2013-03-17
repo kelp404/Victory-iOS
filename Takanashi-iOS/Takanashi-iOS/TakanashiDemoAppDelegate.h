@@ -17,7 +17,4 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) TakanashiDemoViewController *viewController;
 
-// KSCrash
-@property(nonatomic, readwrite, assign) BOOL crashInHandler;
-
 @end

@@ -10,18 +10,8 @@
 #import "TakanashiDemoViewController.h"
 #import <KSCrash/KSCrash.h>
 #import <KSCrash/KSCrashAdvanced.h>
-#import <KSCrash/KSCrashReportSinkStandard.h>
+#import <KSCrash/KSCrashInstallationTakanashi.h>
 
-
-#pragma mark - KSCrash static
-static BOOL g_crashInHandler = NO;
-static void onCrash(const KSCrashReportWriter* writer)
-{
-    if (g_crashInHandler)
-    {
-        printf(NULL);
-    }
-}
 
 
 #pragma mark - App delegate
@@ -35,7 +25,6 @@ static void onCrash(const KSCrashReportWriter* writer)
 {
     // crash handler
     [self installCrashHandler];
-    [self uploadCrashLog];
     
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
@@ -47,40 +36,34 @@ static void onCrash(const KSCrashReportWriter* writer)
 }
 
 
-#pragma mark Crash Handler
-- (BOOL)crashInHandler
-{
-    return g_crashInHandler;
-}
-- (void)setCrashInHandler:(BOOL)crashInHandler
-{
-    g_crashInHandler = crashInHandler;
-}
-/**
- Upload crash reports.
- */
-- (void)uploadCrashLog
-{
-    KSCrash *crash = [KSCrash instance];
-    if (crash.reportCount > 0) {
-        // upload crash
-        crash.deleteAfterSend = YES;
-        crash.sink = [KSCrashReportSinkStandard sinkWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/crash/%@", TAKANASHI_URL, TAKANASHI_APP_KEY]] onSuccess:nil];
-        [crash sendAllReportsWithCompletion:nil];
-    }
-}
 /**
  Install crash handler.
  */
 - (void)installCrashHandler
 {
-    // install crash handler
-    [KSCrash installWithCrashReportSink:nil
-                               userInfo:@{ @"name": UIDevice.currentDevice.name }
-                        zombieCacheSize:16384
-               deadlockWatchdogInterval:5.0f
-                     printTraceToStdout:YES
-                                onCrash:onCrash];
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/crash/%@", TAKANASHI_URL, TAKANASHI_APP_KEY]];
+    
+    KSCrashInstallationTakanashi* installation = [KSCrashInstallationTakanashi sharedInstance];
+    installation.url = url;
+    installation.userName = @"user name";
+    installation.userEmail = @"userEmail@gmail.com";
+    
+    // Install the crash handler. This should be done as early as possible.
+    // This will record any crashes that occur, but it doesn't automatically send them.
+    [installation install];
+    
+    
+    // Send all outstanding reports. You can do this any time; it doesn't need
+    // to happen right as the app launches. Advanced-Example shows how to defer
+    // displaying the main view controller until crash reporting completes.
+    [installation sendAllReportsWithCompletion:^(NSArray *filteredReports, BOOL completed, NSError *error) {
+        if (completed) {
+            NSLog(@"Sent %d reports", [filteredReports count]);
+        }
+        else {
+            NSLog(@"Failed to send reports: %@", error);
+        }
+    }];
 }
 
 
