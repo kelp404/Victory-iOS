@@ -10,13 +10,6 @@
 #import "JSONKit.h"
 
 
-#pragma mark - TakanashiReportType
-enum {
-    TakanashiReportException = 0,
-    TakanashiReportLog = 1,
-};
-typedef NSUInteger TakanashiReportType;
-
 #pragma mark - TakanashiModel
 @implementation TakanashiModel
 @synthesize name = _name;

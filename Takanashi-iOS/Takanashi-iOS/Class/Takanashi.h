@@ -9,9 +9,18 @@
 #import <Foundation/Foundation.h>
 
 
-#define TAKANASHI_URL @"https://takanashi-demo.appspot.com/api/v1"
-#define TAKANASHI_APP_KEY @"0571f5f6-652d-413f-8043-0e9531e1b689"
-#define TAKANASHI_USER_AGENT @"Takanashi iOS"
+#if !TAKANASHI_APP_KEY
+    #define TAKANASHI_URL @"https://takanashi-demo.appspot.com/api/v1"
+    #define TAKANASHI_APP_KEY @"0571f5f6-652d-413f-8043-0e9531e1b689"
+    #define TAKANASHI_USER_AGENT @"Takanashi iOS"
+#endif
+
+
+#pragma mark - TakanashiReportType
+typedef enum {
+    TakanashiReportException = 0,
+    TakanashiReportLog = 1,
+} TakanashiReportType;
 
 
 #pragma mark - TakanashiModel
@@ -35,7 +44,7 @@
 @property (strong, nonatomic) NSString *title;          // report title
 @property (strong, nonatomic) NSString *description;    // report description
 @property (strong, nonatomic) NSDate *create_time;      // report datetime "yyyy-MM-ddTHH:mm:ss"
-@property (nonatomic) NSUInteger type;
+@property (nonatomic) TakanashiReportType type;
 + (TakanashiModel *)modelWithTitle:(NSString *)title description:(NSString *)description;
 @end
 
