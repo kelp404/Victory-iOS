@@ -91,6 +91,7 @@
 @implementation Takanashi
 
 @synthesize name = _name;
+@synthesize url = _url;
 @synthesize appKey = _appKey;
 @synthesize accessToken = _accessToken;
 @synthesize email = _email;
@@ -122,9 +123,10 @@ static Takanashi *_instance;
 
 
 #pragma mark - Setup
-+ (void)setAppKey:(NSString *)appKey
++ (void)setUrl:(NSString *)url andAppKey:(NSString *)appKey
 {
     Takanashi *instance = [Takanashi instance];
+    instance.url = url;
     instance.appKey = appKey;
 }
 + (void)setUserName:(NSString *)name userEmail:(NSString *)email
@@ -209,11 +211,17 @@ static Takanashi *_instance;
         NSURL *url = nil;
         switch (model.type) {
             case TakanashiReportException:
-                url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/exception/%@", TAKANASHI_URL, _instance.appKey]];
+                if (_instance.url && _instance.appKey)
+                    url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/exception/%@", _instance.url, _instance.appKey]];
+                else
+                    url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/exception/%@", TAKANASHI_URL, TAKANASHI_APP_KEY]];
                 break;
             case TakanashiReportLog:
             default:
-                url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/log/%@", TAKANASHI_URL, _instance.appKey]];
+                if (_instance.url && _instance.appKey)
+                    url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/log/%@", _instance.url, _instance.appKey]];
+                else
+                    url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/log/%@", TAKANASHI_URL, TAKANASHI_APP_KEY]];
                 break;
         }
         [request setURL:url];

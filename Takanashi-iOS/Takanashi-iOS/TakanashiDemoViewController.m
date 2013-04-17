@@ -33,7 +33,8 @@
     self.title = @"Takanashi - iOS";
     
     // setup takanashi
-    [Takanashi setAppKey:TAKANASHI_APP_KEY];
+    [Takanashi setUrl:@"https://takanashi-demo.appspot.com/api/v1"
+            andAppKey:@"0571f5f6-652d-413f-8043-0e9531e1b689"];
     [Takanashi setUserName:@"Kelp" userEmail:@"kelp@phate.org"];
 }
 

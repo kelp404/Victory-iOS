@@ -9,11 +9,9 @@
 #import <Foundation/Foundation.h>
 
 
-#if !TAKANASHI_APP_KEY
-    #define TAKANASHI_URL @"https://takanashi-demo.appspot.com/api/v1"
-    #define TAKANASHI_APP_KEY @"0571f5f6-652d-413f-8043-0e9531e1b689"
-    #define TAKANASHI_USER_AGENT @"Takanashi iOS"
-#endif
+#define TAKANASHI_URL @"https://takanashi-demo.appspot.com/api/v1"
+#define TAKANASHI_APP_KEY @"0571f5f6-652d-413f-8043-0e9531e1b689"
+#define TAKANASHI_USER_AGENT @"Takanashi iOS"
 
 
 #pragma mark - TakanashiReportType
@@ -61,13 +59,14 @@ typedef enum {
 }
 
 // takanashi application key
+@property (strong, nonatomic) NSString *url;
 @property (strong, nonatomic) NSString *appKey;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *accessToken;
 
 #pragma mark - Setup
-+ (void)setAppKey:(NSString *)appKey;
++ (void)setUrl:(NSString *)url andAppKey:(NSString *)appKey;
 + (void)setUserName:(NSString *)name userEmail:(NSString *)email;
 + (void)setUserName:(NSString *)name userEmail:(NSString *)email accessToken:(NSString *)accessToken;
 

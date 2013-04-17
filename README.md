@@ -15,14 +15,30 @@ $ git clone --recursive git://github.com/kelp404/Takanashi-iOS.git
 ```
 
 
-##Update server url and application key
-open `/Takanashi-iOS/Takanashi-iOS/Class/Takanashi.h`
+##Example
 ```objective-c
-// this is your takanashi server url
-#define TAKANASHI_URL @"https://takanashi-demo.appspot.com/api/v1"
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.title = @"Takanashi - iOS";
+    
+    // setup takanashi
+    // these are your takanashi server url and application key
+    [Takanashi setUrl:@"https://takanashi-demo.appspot.com/api/v1"
+            andAppKey:@"0571f5f6-652d-413f-8043-0e9531e1b689"];
 
-// this is your takanashi application key
-#define TAKANASHI_APP_KEY @"0571f5f6-652d-413f-8043-0e9531e1b689"
+    // app user name
+    [Takanashi setUserName:@"Kelp" userEmail:@"kelp@phate.org"];
+}
+
+// send log report method
+- (void)sendLogReport
+{
+    // send a log report
+    [Takanashi sendLogReportWithTitle:@"Login successful" description:@"account: 10210\nname: Kelp"];
+}
 ```
 
 
