@@ -65,6 +65,8 @@ typedef enum {
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *accessToken;
 
++ (id)instance;
+
 #pragma mark - Setup
 + (void)setUrl:(NSString *)url andAppKey:(NSString *)appKey;
 + (void)setUserName:(NSString *)name userEmail:(NSString *)email;

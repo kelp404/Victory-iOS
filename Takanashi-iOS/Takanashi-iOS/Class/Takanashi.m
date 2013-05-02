@@ -34,9 +34,18 @@
         NSDictionary *infoPList = [[NSBundle mainBundle] infoDictionary];
         _version = [NSString stringWithFormat:@"%@ (%@)", [infoPList objectForKey:@"CFBundleShortVersionString"], [infoPList objectForKey:@"CFBundleVersion"]];
         _device = [UIDevice currentDevice].model;
-        _name = [UIDevice currentDevice].name;
         _osVersion = [UIDevice currentDevice].systemVersion;
         _createTime = [NSDate date];
+        
+        Takanashi *instance = [Takanashi instance];
+        if (instance.name)
+            _name = instance.name;
+        else
+            _name = [UIDevice currentDevice].name;
+        if (instance.email)
+            _email = instance.email;
+        if (instance.accessToken)
+            _accessToken = instance.accessToken;
     }
     return self;
 }
