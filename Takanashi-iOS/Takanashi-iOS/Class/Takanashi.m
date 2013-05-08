@@ -109,17 +109,6 @@ static Takanashi *_instance;
 
 
 #pragma mark - Init
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        _reportsQueue = [NSMutableArray new];
-        // retry sending reports after 60s
-        _retryTime = dispatch_time(DISPATCH_TIME_NOW, 60.0 * NSEC_PER_SEC);
-        _dispatch = dispatch_queue_create("takanashi.dispatch", NULL);
-    }
-    return self;
-}
 + (id)instance
 {
     @synchronized (_instance) {
@@ -245,21 +234,6 @@ static Takanashi *_instance;
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
                                    if (error || data.length <= 0 || httpResponse.statusCode != 200) {
-                                       // push into reports queue
-                                       dispatch_sync(_dispatch, ^{
-                                           [_reportsQueue addObject:model];
-                                           if (_reportsQueue.count > 5) {
-                                               [_reportsQueue removeObjectAtIndex:0];
-                                           }
-                                       });
-                                       // retry to send reports
-                                       dispatch_after(_retryTime, _dispatch, ^(void){
-                                           if (_reportsQueue.count > 0) {
-                                               TakanashiModel *model = [_reportsQueue objectAtIndex:0];
-                                               [_reportsQueue removeObjectAtIndex:0];
-                                               [self sendReport:model];
-                                           }
-                                       });
 #if DEBUG
                                        NSLog(@"Takanashi send the report failed: %@", error.description);
 #endif

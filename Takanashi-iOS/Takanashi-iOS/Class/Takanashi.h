@@ -49,14 +49,7 @@ typedef enum {
 
 
 #pragma mark - Takanashi
-@interface Takanashi : NSObject {
-    // if the report sent failed, it will cache in this array.
-    NSMutableArray *_reportsQueue;
-    // resend reports, add model into _reportsQueue should process in this dispatch.
-    dispatch_queue_t _dispatch;
-    // retry sending reports after 60s
-    dispatch_time_t _retryTime;
-}
+@interface Takanashi : NSObject
 
 // takanashi application key
 @property (strong, nonatomic) NSString *url;
