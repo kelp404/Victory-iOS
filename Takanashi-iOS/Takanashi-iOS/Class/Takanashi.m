@@ -88,6 +88,7 @@
     if (_accessToken) { [result setObject:_accessToken forKey:@"access_token"]; }
     if (_createTime) { [result setObject:[_formatter stringFromDate:_createTime] forKey:@"create_time"]; }
     if (_timeout) { [result setObject:_timeout forKey:@"timeout"]; }
+    if (_parameters) { [result setObject:_parameters forKey:@"parameters"]; }
     
     return result;
 }
