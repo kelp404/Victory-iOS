@@ -1,17 +1,17 @@
 //
-//  Takanashi.m
-//  Takanashi-iOS
+//  Victory.m
+//  Victory-iOS
 //
 //  Created by Kelp on 2013/03/01.
 //
 //
 
-#import "Takanashi.h"
+#import "Victory.h"
 #import "JSONKit.h"
 
 
-#pragma mark - TakanashiModel
-@implementation TakanashiModel
+#pragma mark - VictoryModel
+@implementation VictoryModel
 @synthesize name = _name;
 @synthesize title = _title;
 @synthesize description = _description;
@@ -37,7 +37,7 @@
         _osVersion = [UIDevice currentDevice].systemVersion;
         _createTime = [NSDate date];
         
-        Takanashi *instance = [Takanashi instance];
+        Victory *instance = [Victory instance];
         if (instance.name)
             _name = instance.name;
         else
@@ -49,9 +49,9 @@
     }
     return self;
 }
-+ (TakanashiModel *)modelWithTitle:(NSString *)title description:(NSString *)description
++ (VictoryModel *)modelWithTitle:(NSString *)title description:(NSString *)description
 {
-    TakanashiModel *result = [TakanashiModel new];
+    VictoryModel *result = [VictoryModel new];
     result.title = title;
     result.description = description;
     
@@ -60,7 +60,7 @@
 
 #pragma mark - Get dictionary
 /**
- Convert TakanashiModel to NSDictionary.
+ Convert VictoryModel to NSDictionary.
  @return: NSDictionary
  */
 - (NSDictionary *)dictionary
@@ -96,8 +96,8 @@
 
 
 
-#pragma mark - Takanashi
-@implementation Takanashi
+#pragma mark - Victory
+@implementation Victory
 
 @synthesize name = _name;
 @synthesize url = _url;
@@ -105,7 +105,7 @@
 @synthesize accessToken = _accessToken;
 @synthesize email = _email;
 
-static Takanashi *_instance;
+static Victory *_instance;
 
 
 #pragma mark - Init
@@ -123,19 +123,19 @@ static Takanashi *_instance;
 #pragma mark - Setup
 + (void)setUrl:(NSString *)url andAppKey:(NSString *)appKey
 {
-    Takanashi *instance = [Takanashi instance];
+    Victory *instance = [Victory instance];
     instance.url = url;
     instance.appKey = appKey;
 }
 + (void)setUserName:(NSString *)name userEmail:(NSString *)email
 {
-    Takanashi *instance = [Takanashi instance];
+    Victory *instance = [Victory instance];
     instance.name = name;
     instance.email = email;
 }
 + (void)setUserName:(NSString *)name userEmail:(NSString *)email accessToken:(NSString *)accessToken
 {
-    Takanashi *instance = [Takanashi instance];
+    Victory *instance = [Victory instance];
     instance.name = name;
     instance.email = email;
     instance.accessToken = accessToken;
@@ -145,16 +145,16 @@ static Takanashi *_instance;
 #pragma mark - Send reports
 + (void)sendExceptionReportWithTitle:(NSString *)title description:(NSString *)description
 {
-    Takanashi *instance = [Takanashi instance];
-    TakanashiModel *model = [TakanashiModel modelWithTitle:title description:description];
-    model.type = TakanashiReportException;
+    Victory *instance = [Victory instance];
+    VictoryModel *model = [VictoryModel modelWithTitle:title description:description];
+    model.type = VictoryReportException;
     [instance sendReport:model];
 }
 + (void)sendExceptionReportWithTitle:(NSString *)title request:(NSURLRequest *)request response:(NSHTTPURLResponse *)response error:(NSError *)error
 {
-    Takanashi *instance = [Takanashi instance];
-    TakanashiModel *model = [TakanashiModel modelWithTitle:title description:error.description];
-    model.type = TakanashiReportException;
+    Victory *instance = [Victory instance];
+    VictoryModel *model = [VictoryModel modelWithTitle:title description:error.description];
+    model.type = VictoryReportException;
     
     if (response) {
         model.status = [NSString stringWithFormat:@"%i", response.statusCode];
@@ -171,16 +171,16 @@ static Takanashi *_instance;
 }
 + (void)sendLogReportWithTitle:(NSString *)title description:(NSString *)description
 {
-    Takanashi *instance = [Takanashi instance];
-    TakanashiModel *model = [TakanashiModel modelWithTitle:title description:description];
-    model.type = TakanashiReportLog;
+    Victory *instance = [Victory instance];
+    VictoryModel *model = [VictoryModel modelWithTitle:title description:description];
+    model.type = VictoryReportLog;
     [instance sendReport:model];
 }
 + (void)sendLogReportWithTitle:(NSString *)title request:(NSURLRequest *)request response:(NSHTTPURLResponse *)response error:(NSError *)error
 {
-    Takanashi *instance = [Takanashi instance];
-    TakanashiModel *model = [TakanashiModel modelWithTitle:title description:error.description];
-    model.type = TakanashiReportLog;
+    Victory *instance = [Victory instance];
+    VictoryModel *model = [VictoryModel modelWithTitle:title description:error.description];
+    model.type = VictoryReportLog;
     
     if (response) {
         model.status = [NSString stringWithFormat:@"%i", response.statusCode];
@@ -199,34 +199,34 @@ static Takanashi *_instance;
 
 #pragma mark - Instance messages
 /**
- Send the report to the takanashi server.
+ Send the report to the Victory server.
  @param model: report data
  */
-- (void)sendReport:(TakanashiModel *)model
+- (void)sendReport:(VictoryModel *)model
 {
     @try {
         NSMutableURLRequest *request = [NSMutableURLRequest new];
         NSURL *url = nil;
         switch (model.type) {
-            case TakanashiReportException:
+            case VictoryReportException:
                 if (_instance.url && _instance.appKey)
                     url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/exception/%@", _instance.url, _instance.appKey]];
                 else
-                    url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/exception/%@", TAKANASHI_URL, TAKANASHI_APP_KEY]];
+                    url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/exception/%@", VICTORY_URL, VICTORY_APP_KEY]];
                 break;
-            case TakanashiReportLog:
+            case VictoryReportLog:
             default:
                 if (_instance.url && _instance.appKey)
                     url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/log/%@", _instance.url, _instance.appKey]];
                 else
-                    url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/log/%@", TAKANASHI_URL, TAKANASHI_APP_KEY]];
+                    url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/log/%@", VICTORY_URL, VICTORY_APP_KEY]];
                 break;
         }
         [request setURL:url];
         [request setHTTPMethod:@"POST"];
         [request setTimeoutInterval:30.0];  // timeout 30.0s
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        [request setValue:TAKANASHI_USER_AGENT forHTTPHeaderField:@"User-Agent"];
+        [request setValue:VICTORY_USER_AGENT forHTTPHeaderField:@"User-Agent"];
         [request setHTTPBody:model.dictionary.JSONData];
         
         [NSURLConnection sendAsynchronousRequest:request
@@ -235,19 +235,19 @@ static Takanashi *_instance;
                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
                                    if (error || data.length <= 0 || httpResponse.statusCode != 200) {
 #if DEBUG
-                                       NSLog(@"Takanashi send the report failed: %@", error.description);
+                                       NSLog(@"Victory send the report failed: %@", error.description);
 #endif
                                    }
                                    else {
 #if DEBUG
-                                       NSLog(@"Takanashi send the report successful.");
+                                       NSLog(@"Victory send the report successful.");
 #endif
                                    }
                                }];
     }
     @catch (NSException *exception) {
 #if DEBUG
-        NSLog(@"Takanashi sent the report failed (exception).");
+        NSLog(@"Victory sent the report failed (exception).");
 #endif
     }
 }

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Takanashi-iOS/Takanashi-iOS.xcodeproj">
+      location = "group:Victory-iOS/Victory-iOS.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:KSCrash/KSCrash/KSCrash.xcodeproj">

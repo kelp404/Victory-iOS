@@ -1,13 +1,13 @@
 //
-//  TakanashiDemoViewController.m
-//  Takanashi-iOS
+//  VictoryDemoViewController.m
+//  Victory-iOS
 //
-//  Created by Kelp on 2013/03/01.
-//
+//  Created by Kelp on 2013/06/12.
+//  Copyright (c) 2013年 Kelp. All rights reserved.
 //
 
-#import "TakanashiDemoViewController.h"
-#import "Takanashi.h"
+#import "VictoryDemoViewController.h"
+#import "Victory.h"
 
 
 #define ROW_SEND_LOG 0
@@ -15,12 +15,11 @@
 #define ROW_CRASH 2
 
 
-@implementation TakanashiDemoViewController
 
-
+@implementation VictoryDemoViewController
 + (NSString *)xibName
 {
-    return @"TakanashiDemoView";
+    return @"VictoryDemoView";
 }
 
 
@@ -28,20 +27,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    // setup title
+    self.title = @"Victory - iOS";
     
-    self.title = @"Takanashi - iOS";
-    
-    // setup takanashi
-    [Takanashi setUrl:@"https://takanashi-demo.appspot.com/api/v1"
-            andAppKey:@"0571f5f6-652d-413f-8043-0e9531e1b689"];
-    [Takanashi setUserName:@"Kelp" userEmail:@"kelp@phate.org"];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    // setup victory
+    [Victory setUrl:VICTORY_URL
+          andAppKey:VICTORY_APP_KEY];
+    [Victory setUserName:@"Kelp" userEmail:@"kelp@phate.org"];
 }
 
 
@@ -52,7 +45,7 @@
 - (void)sendLogReport
 {
     // send a log report
-    [Takanashi sendLogReportWithTitle:@"Login successful" description:@"account: 10210\nname: Kelp"];
+    [Victory sendLogReportWithTitle:@"Login successful" description:@"account: 10210\nname: Kelp"];
 }
 /**
  Send an exception report to the server.
@@ -62,7 +55,7 @@
     // GET http://google.com.xxx
     NSURL *url = [NSURL URLWithString:@"http://google.com.xxx"];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-
+    
     [request setHTTPMethod:@"GET"];
     [request setTimeoutInterval:1.0];  // timeout 1.0s
     
@@ -73,10 +66,10 @@
     
     if (error || data.length <= 0 || response.statusCode != 200) {
         // request failed, send an exception report
-        [Takanashi sendExceptionReportWithTitle:@"web service error"
-                                        request:request
-                                       response:response
-                                          error:error];
+        [Victory sendExceptionReportWithTitle:@"web service error"
+                                      request:request
+                                     response:response
+                                        error:error];
     }
 }
 
@@ -115,7 +108,7 @@
             break;
         case ROW_CRASH:
             // crash code
-            @throw [NSException exceptionWithName:@"Takanashi - iOS" reason:@"crash test" userInfo:nil];
+            @throw [NSException exceptionWithName:@"Victory - iOS" reason:@"crash test" userInfo:nil];
             break;
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -133,6 +126,5 @@
 {
     return 1;
 }
-
 
 @end
