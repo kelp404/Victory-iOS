@@ -1,6 +1,6 @@
 //
-//  Takanashi.h
-//  Takanashi-iOS
+//  Victory.h
+//  Victory-iOS
 //
 //  Created by Kelp on 2013/03/01.
 //
@@ -9,23 +9,23 @@
 #import <Foundation/Foundation.h>
 
 
-#define TAKANASHI_URL @"https://takanashi-demo.appspot.com/api/v1"
-#define TAKANASHI_APP_KEY @"0571f5f6-652d-413f-8043-0e9531e1b689"
-#define TAKANASHI_USER_AGENT @"Takanashi iOS"
+#define VICTORY_URL @"https://victory-demo.appspot.com/api/v1"
+#define VICTORY_APP_KEY @"2324e6e2-3407-4896-a498-5d340b9f300c"
+#define VICTORY_USER_AGENT @"Victory iOS"
 
 
-#pragma mark - TakanashiReportType
+#pragma mark - VictoryReportType
 typedef enum {
-    TakanashiReportException = 0,
-    TakanashiReportLog = 1,
-} TakanashiReportType;
+    VictoryReportException = 0,
+    VictoryReportLog = 1,
+} VictoryReportType;
 
 
-#pragma mark - TakanashiModel
+#pragma mark - VictoryModel
 /**
  An exception, log report data model.
  */
-@interface TakanashiModel : NSObject {
+@interface VictoryModel : NSObject {
     NSDateFormatter *_formatter;
 }
 @property (strong, nonatomic) NSString *version;        // app version
@@ -42,16 +42,16 @@ typedef enum {
 @property (strong, nonatomic) NSString *title;          // report title
 @property (strong, nonatomic) NSString *description;    // report description
 @property (strong, nonatomic) NSDate *create_time;      // report datetime "yyyy-MM-ddTHH:mm:ss"
-@property (nonatomic) TakanashiReportType type;
-+ (TakanashiModel *)modelWithTitle:(NSString *)title description:(NSString *)description;
+@property (nonatomic) VictoryReportType type;
++ (VictoryModel *)modelWithTitle:(NSString *)title description:(NSString *)description;
 @end
 
 
 
-#pragma mark - Takanashi
-@interface Takanashi : NSObject
+#pragma mark - Victory
+@interface Victory : NSObject
 
-// takanashi application key
+// victory application key
 @property (strong, nonatomic) NSString *url;
 @property (strong, nonatomic) NSString *appKey;
 @property (strong, nonatomic) NSString *name;

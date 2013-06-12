@@ -1,26 +1,22 @@
 //
-//  TakanashiDemoAppDelegate.m
-//  Takanashi-iOS
+//  VictoryDemoAppDelegate.m
+//  Victory-iOS
 //
-//  Created by Kelp on 2013/03/01.
-//
+//  Created by Kelp on 2013/06/12.
+//  Copyright (c) 2013年 Kelp. All rights reserved.
 //
 
-#import "TakanashiDemoAppDelegate.h"
-#import "TakanashiDemoViewController.h"
+#import "VictoryDemoAppDelegate.h"
+#import "VictoryDemoViewController.h"
+#import "Victory.h"
 #import <KSCrash/KSCrash.h>
 #import <KSCrash/KSCrashAdvanced.h>
-#import <KSCrash/KSCrashInstallationTakanashi.h>
+#import <KSCrash/KSCrashInstallationVictory.h>
 
 
 
-#pragma mark - App delegate
-@implementation TakanashiDemoAppDelegate
+@implementation VictoryDemoAppDelegate
 
-@synthesize window = _window;
-@synthesize viewController = _viewController;
-
-#pragma mark - Launch
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // crash handler
@@ -28,22 +24,21 @@
     
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    _viewController = [[TakanashiDemoViewController alloc] initWithNibName:[TakanashiDemoViewController xibName] bundle:nil];
+    _viewController = [[VictoryDemoViewController alloc] initWithNibName:[VictoryDemoViewController xibName] bundle:nil];
     UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:_viewController];
     _window.rootViewController = navigation;
     [_window makeKeyAndVisible];
     return YES;
 }
 
-
 /**
  Install crash handler.
  */
 - (void)installCrashHandler
 {
-    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/crash/%@", TAKANASHI_URL, TAKANASHI_APP_KEY]];
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/crash/%@", VICTORY_URL, VICTORY_APP_KEY]];
     
-    KSCrashInstallationTakanashi* installation = [KSCrashInstallationTakanashi sharedInstance];
+    KSCrashInstallationVictory* installation = [KSCrashInstallationVictory sharedInstance];
     installation.url = url;
     installation.userName = @"user name";
     installation.userEmail = @"userEmail@gmail.com";
@@ -66,8 +61,6 @@
     }];
 }
 
-
-#pragma mark - Cocoa application life cycle
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
